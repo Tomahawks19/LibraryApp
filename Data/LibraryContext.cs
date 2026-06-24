@@ -14,6 +14,7 @@ public class LibraryContext : DbContext
     public DbSet<Author> Authors { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Loan> Loans { get; set; }
+    public DbSet<LibraryBranch> LibraryBranches { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
