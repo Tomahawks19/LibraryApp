@@ -2,6 +2,8 @@ using LibraryApp.Data;
 using LibraryApp.Dtos;
 using LibraryApp.Models;
 using Microsoft.EntityFrameworkCore;
+using LibraryApp.Repositories;
+using LibraryApp.Services;
 
 // ===== Day 1 Exercise: Library Member Management =====
 
@@ -81,6 +83,10 @@ builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryConnection"))
            .LogTo(Console.WriteLine, LogLevel.Information)
            .EnableSensitiveDataLogging());
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+builder.Services.AddScoped<LibraryService>();
 
 builder.Services.AddRazorPages();
 

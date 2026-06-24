@@ -12,9 +12,15 @@ public class AuthorConfiguration : IEntityTypeConfiguration<Author>
             .WithOne(b => b.Author)
             .HasForeignKey(b => b.AuthorId)
             .IsRequired()
-            // Cascade: if an Author is deleted, their Books are deleted too.
-            // Justified because a Book without an Author is not valid in this domain
-            // (every book must belong to exactly one author).
             .OnDelete(DeleteBehavior.Cascade);
+
+        // Seed data: reference authors available in Development.
+        // Fixed AuthorId values are required by HasData() since EF Core
+        // cannot auto-generate keys for seed data at migration-build time.
+        builder.HasData(
+            new Author { AuthorId = 1001, FullName = "Gabriel García Márquez", Nationality = "Colombian" },
+            new Author { AuthorId = 1002, FullName = "Isabel Allende", Nationality = "Chilean" },
+            new Author { AuthorId = 1003, FullName = "Mario Vargas Llosa", Nationality = "Peruvian" }
+        );
     }
 }
