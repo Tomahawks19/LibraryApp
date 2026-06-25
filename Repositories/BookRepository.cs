@@ -34,9 +34,21 @@ public class BookRepository : IBookRepository
             .ToListAsync();
     }
 
+    public async Task AddAsync(Book book)
+    {
+        _context.Books.Add(book);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task UpdateAsync(Book book)
     {
         _context.Books.Update(book);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Book book)
+    {
+        _context.Books.Remove(book);
         await _context.SaveChangesAsync();
     }
 }

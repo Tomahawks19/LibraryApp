@@ -6,5 +6,14 @@
 /// </summary>
 public class BusinessRuleException : Exception
 {
-    public BusinessRuleException(string message) : base(message) { }
+    public string? ResourceName { get; }
+
+    public BusinessRuleException(string message) : base(message)
+    {
+    }
+
+    public BusinessRuleException(string message, string resourceName) : base(message)
+    {
+        ResourceName = resourceName;
+    }
 }

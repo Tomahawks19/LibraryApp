@@ -5,5 +5,17 @@
 /// </summary>
 public class NotFoundException : Exception
 {
-    public NotFoundException(string message) : base(message) { }
+    /// <summary>
+    /// Identifies which entity type triggered this exception (e.g. "Book", "Member").
+    /// </summary>
+    public string? ResourceName { get; }
+
+    public NotFoundException(string message) : base(message)
+    {
+    }
+
+    public NotFoundException(string message, string resourceName) : base(message)
+    {
+        ResourceName = resourceName;
+    }
 }
