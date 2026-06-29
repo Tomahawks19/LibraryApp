@@ -4,6 +4,7 @@ using LibraryApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryApp.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20260627234357_AddAuthorNamesLoanExpectedMemberTypeEnum")]
+    partial class AddAuthorNamesLoanExpectedMemberTypeEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,7 +211,7 @@ namespace LibraryApp.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ExpectedReturnDate")
+                    b.Property<DateTime?>("ExpectedReturnData")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("LoanDate")
@@ -257,12 +260,6 @@ namespace LibraryApp.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("MemberType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
                         .HasColumnType("int");
 
                     b.HasKey("MemberId");

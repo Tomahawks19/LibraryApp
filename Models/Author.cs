@@ -20,6 +20,18 @@ public class Author
     [MaxLength(150)]
     public string FullName { get; set; }
 
+    ///<summary>
+    ///First name of the author, Nullable to preserve compatibilty with
+    ///exisiting authors seeded with only FullName (Week 3 Day 4 seed data)
+    /// </summary>
+    [MaxLength(75)]
+    public string? FirstName { get; set; }
+
+    ///<summary>
+    ///Last name of the author, Nullable for the same reason as Firstname
+    /// </summary>
+    public string? LastName { get; set; }
+
     /// <summary>
     /// Country of origin of the author.
     /// </summary>

@@ -9,10 +9,10 @@ using LibraryApp.Services;
 
 List<Member> members = new List<Member>
 {
-    new Member(1, "Jane Smith", true, 'P', 2.50m),
-    new Member(2, "Bob Jones", false, 'S', 5.00m),
-    new Member(3, "Sarah Lee", true, 'S', 0.00m),
-    new Member(4, "Tom Hall", true, 'P', 1.75m)
+    new Member(1, "Jane Smith", true, MemberType.Premium, 2.50m),
+    new Member(2, "Bob Jones", false, MemberType.Standard, 5.00m),
+    new Member(3, "Sarah Lee", true, MemberType.Standard, 0.00m),
+    new Member(4, "Tom Hall", true, MemberType.Premium, 1.75m)
 };
 
 PrintReport(members);
@@ -41,10 +41,10 @@ void PrintReport(List<Member> memberList)
         string membershipTier;
         switch (member.MemberType)
         {
-            case 'P':
+            case MemberType.Premium:
                 membershipTier = "Premium";
                 break;
-            case 'S':
+            case MemberType.Standard:
                 membershipTier = "Standard";
                 break;
             default:
@@ -123,8 +123,8 @@ using (var scope = app.Services.CreateScope())
         book4.Genres.Add(genreRomance);
 
         // ----- Members -----
-        var alice = new Member { FullName = "Alice Johnson", Email = "alice.johnson@library.com", IsActive = true, MemberType = 'S', LateFee = 0.00m };
-        var carlos = new Member { FullName = "Carlos Mendez", Email = "carlos.mendez@library.com", IsActive = true, MemberType = 'P', LateFee = 3.50m };
+        var alice = new Member { FullName = "Alice Johnson", Email = "alice.johnson@library.com", IsActive = true, MemberType = MemberType.Standard, LateFee = 0.00m };
+        var carlos = new Member { FullName = "Carlos Mendez", Email = "carlos.mendez@library.com", IsActive = true, MemberType = MemberType.Premium, LateFee = 3.50m };
 
         // ----- Loans -----
         var loan1 = new Loan { Book = book1, Member = alice, LoanDate = DateTime.Now.AddDays(-5) };

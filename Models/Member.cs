@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace LibraryApp.Models;
 
@@ -21,20 +22,32 @@ public class Member
     public string Email { get; set; }
 
     public bool IsActive { get; set; }
-
-    public char MemberType { get; set; }
+    
+    public MemberType MemberType { get; set; }
 
     public decimal LateFee { get; set; }
+
+    ///<summary>
+    ///
+    /// </summary>
+    public string? PasswordHash { get; set; }
+
+    ///<sumary>
+    ///Authorization role used dor JWT-based rolebased acces control
+    ///Defaults to Member for all existing and newly created members
+    /// </sumary>
+    public UserRole Role { get; set; }
 
     /// <summary>
     /// Date of birth of the member, used for age verification and demographics.
     /// </summary>
     public DateTime? DateOfBirth { get; set; }
+    [JsonIgnore]
     public ICollection<Loan> Loans { get; set; } = new List<Loan>();
 
     public Member() { }
 
-    public Member(int memberId, string fullName, bool isActive, char memberType, decimal lateFee)
+    public Member(int memberId, string fullName, bool isActive, MemberType memberType, decimal lateFee)
     {
         MemberId = memberId;
         FullName = fullName;

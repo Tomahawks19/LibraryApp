@@ -5,7 +5,7 @@ namespace LibraryApp.Repositories;
 /// <summary>
 /// Defines data access operations for Book entities.
 /// </summary>
-public interface IBookRepository
+public interface IBookRepository : IBookReadRepository, IBookWriteRepository
 {
     Task<IEnumerable<Book>> GetAllAsync();
     Task<Book?> GetByIdAsync(int bookId);

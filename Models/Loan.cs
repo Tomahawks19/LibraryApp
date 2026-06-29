@@ -19,6 +19,13 @@ public class Loan
     /// </summary>
     public DateTime LoanDate { get; set; }
 
+    ///<summary>
+    /// Date the borrower agreed to return the book by, seta at checkout time.
+    /// Nullable to preserve compatibility with loans created before this
+    /// field existed (Week 3/4 seed and test data).
+    /// </summary>
+    public DateTime? ExpectedReturnDate { get; set; }
+
     /// <summary>
     /// Date the book is due back, or was returned.
     /// </summary>
