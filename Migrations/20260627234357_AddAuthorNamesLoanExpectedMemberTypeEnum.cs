@@ -11,7 +11,7 @@ namespace LibraryApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "FirtName",
+                name: "FirstName",
                 table: "Authors",
                 type: "nvarchar(75)",
                 maxLength: 75,

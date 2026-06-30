@@ -10,11 +10,6 @@ namespace LibraryApp.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "ExpectedReturnData",
-                table: "Loans",
-                newName: "ExpectedReturnDate");
-
             migrationBuilder.AddColumn<string>(
                 name: "PasswordHash",
                 table: "Members",
@@ -39,11 +34,6 @@ namespace LibraryApp.Migrations
             migrationBuilder.DropColumn(
                 name: "Role",
                 table: "Members");
-
-            migrationBuilder.RenameColumn(
-                name: "ExpectedReturnDate",
-                table: "Loans",
-                newName: "ExpectedReturnData");
         }
     }
 }
